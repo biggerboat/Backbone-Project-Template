@@ -14,8 +14,9 @@ module.exports = function (grunt) {
 			},
 
 			'persistent-files': {
-				src: ['public/js/vendors/requirejs/require.js'],
-				dest: 'tmp/deploy/js/vendors/requirejs/require.js'
+				files: [
+					{ src: 'public/js/vendors/requirejs/require.js', dest: 'tmp/deploy/js/vendors/requirejs/require.js' }
+				]
 			},
 
 			"deploy-zip-as-now": {
@@ -54,6 +55,10 @@ module.exports = function (grunt) {
 			}
 		},
 
+		concurrent: {
+			dev: ['connect:dev', 'watch:dev']
+		},
+
 		connect: {
 			dev: {
 				options: {
@@ -69,6 +74,15 @@ module.exports = function (grunt) {
 					open:true,
 					port: 9001,
 					base: 'tmp/deploy/'
+				}
+			}
+		},
+
+		watch: {
+			dev: {
+				files: 'public/**/*',
+				options: {
+					livereload: true
 				}
 			}
 		},
@@ -121,13 +135,15 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-requirejs');
 	grunt.loadNpmTasks('grunt-text-replace');
 	grunt.loadNpmTasks('grunt-zip');
+	grunt.loadNpmTasks('grunt-concurrent');
 	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-ftp-deploy');
 	grunt.loadNpmTasks('grunt-open');
 
 	grunt.registerTask('default', ['deploy']);
 
-	grunt.registerTask('serve', ['connect:dev']);
+	grunt.registerTask('serve', ['concurrent:dev']);
 
 	grunt.registerTask('deploy', ['clean:tmp', 'copy:tmp', 'clean:tmp-js','copy:persistent-files','requirejs','replace:min']);
 	grunt.registerTask('deploy:zip', ['deploy','zip:deploy']);

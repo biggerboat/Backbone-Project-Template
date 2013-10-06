@@ -12,6 +12,7 @@
 		"backbone-super":"*",
 		"backbone-injector":"*",
 		"backbone-command":"*",
+		"backbone-recursive-toJSON": "*",
 		"greensock-js":"*"
 	}
 }

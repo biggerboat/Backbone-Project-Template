@@ -11,6 +11,7 @@ requirejs.config({
 		"backbone-super":"../vendors/backbone-super/backbone-super/backbone-super",
 		"backbone-command":"../vendors/backbone-command/backbone-command",
 		"backbone-injector":"../vendors/backbone-injector/backbone-injector",
+		"backbone-recursive-tojson":"../vendors/backbone-recursive-toJSON/backbone-recursive-tojson",
 		"TweenLite":"../vendors/greensock-js/src/uncompressed/TweenLite",
 		"TweenEasePack":"../vendors/greensock-js/src/uncompressed/easing/EasePack",
 		"TweenCSSPlugin":"../vendors/greensock-js/src/uncompressed/plugins/CSSPlugin",
@@ -55,6 +56,10 @@ requirejs.config({
 			"deps":["injector-js", "backbone"]
 		},
 
+		"backbone-recursive-tojson": {
+			deps: ["backbone"]
+		},
+
 		"TweenLite":{
 			"exports":"TweenLite"
 		},
@@ -79,6 +84,7 @@ define([
 	"backbone-super",
 	"backbone-command",
 	"backbone-injector",
+	"backbone-recursive-tojson",
 	"TweenLite",
 	"TweenEasePack",
 	"TweenCSSPlugin"

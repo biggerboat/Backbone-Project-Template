@@ -6,7 +6,9 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		clean: {
 			tmp:["tmp/"],
-			'tmp-js':["tmp/deploy/js"]
+			'tmp-js':["tmp/deploy/js"],
+			'compass-generated':["public/css","public/images/generated"],
+			'tmp-spritesheets':["tmp/deploy/images/spritesheets"]
 		},
 
 		copy: {
@@ -57,7 +59,7 @@ module.exports = function (grunt) {
 		},
 
 		concurrent: {
-			dev: ['connect:dev', 'watch:dev']
+			dev: ['serve:dev', 'watch:dev', 'watch:sass']
 		},
 
 		connect: {
@@ -103,6 +105,11 @@ module.exports = function (grunt) {
 				options: {
 					livereload: true
 				}
+			},
+
+			sass: {
+				files:['sass/**/*'],
+				tasks:["compass:dev"]
 			}
 		},
 
@@ -146,7 +153,31 @@ module.exports = function (grunt) {
 			staging: { path: 'http://www.paultondeur.com/files/tmp/grunt/staging/' + now },
 			"staging-zip": { path: 'http://www.paultondeur.com/files/tmp/grunt/staging/zip/' + now +".zip" },
 			production: { path: 'http://www.paultondeur.com/files/tmp/grunt/production/' }
+		},
+
+		compass: {
+			clean: {
+				options: {
+					clean: true
+				}
+			},
+
+			dev: {
+				options: {
+					sassDir: 'sass',
+					config: 'sass/config.rb'
+				}
+			},
+
+			deploy: {
+				options: {
+					sassDir: 'sass',
+					outputStyle: 'compressed',
+					config: 'sass/config.rb'
+				}
+			}
 		}
+
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-clean');
@@ -160,13 +191,20 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-ftp-deploy');
 	grunt.loadNpmTasks('grunt-open');
+	grunt.loadNpmTasks('grunt-contrib-compass');
 
 	grunt.registerTask('default', ['deploy']);
 
-	grunt.registerTask('serve', ['concurrent:dev']);
+	grunt.registerTask('clean:compass', ['clean:compass-generated', 'compass:clean']);
+
+	grunt.registerTask('serve', ['clean:compass', 'compass:dev', 'concurrent:dev']);
 	grunt.registerTask('serve:dev', ['configureRewriteRules', 'connect:dev']);
 
-	grunt.registerTask('deploy', ['clean:tmp', 'copy:tmp', 'clean:tmp-js','copy:persistent-files','requirejs','replace:min']);
+	grunt.registerTask('deploy',   ['clean:compass', 'compass:deploy', 'clean:tmp',
+	                                'copy:tmp', 'clean:tmp-js', 'clean:tmp-spritesheets',
+	                                'copy:persistent-files', 'requirejs', 'replace:min',
+	                                'clean:compass', 'compass:dev']);
+
 	grunt.registerTask('deploy:zip', ['deploy','zip:deploy']);
 
 	grunt.registerTask('deploy:local', ['deploy', 'configureRewriteRules','connect:deploy']);

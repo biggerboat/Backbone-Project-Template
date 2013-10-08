@@ -29,10 +29,17 @@ creates a live-reload server (make sure you do NOT have the live-reload app open
 recompiles your css files upon any changes. When developing this is the task you would want to have running in the background.
 * ```grunt deploy``` This will create a clean build for you in the tmp/deploy folder. All js files will be minified using
 the r.js optimizer and compass makes a clean compile. All the files that will no longer be needed after this compile will be omitted
-from the tmp/deploy folder.
-* ```grunt deploy:zip``` This is essentially the same as ```grunt deploy```, but on top of that it will create a zipfile for you. Easy for sharing with your client!
-* ```grunt deploy:local```
-* ```grunt deploy:staging```
-* ```grunt deploy:staging:zip```
-* ```grunt deploy:staging:full```
-* ```grunt deploy:production```
+from the tmp/deploy folder. It also alters the index.html file in order to reference the correct minimized application.
+* ```grunt deploy:zip``` This is essentially the same as ```grunt deploy```, but on top of that it will create a zipfile for you.
+Easy for sharing with your client!
+* ```grunt deploy:local``` This makes a deploy and serves the deployed file from disk. This way you could locally verify
+everything works as expected.
+* ```grunt deploy:staging``` This uploads the file to a staging environment by using FTP. In order for this to work you should
+add your credentials to ```.ftppass``` file that is next to your Gruntfile. Also alter your ```Gruntfile.js``` in order to configure
+it for your host. All staging uploads will be prefixed with the current date and time, making each staging deploy unique.
+This grunt task will automatically open your browser once the deploy is completed.
+* ```grunt deploy:staging:zip``` This uploads the zipfile to the staging environment. Like ```deploy:staging``` you need
+to make sure to configure the FTP settings to your need.
+* ```grunt deploy:staging:full``` This will both execute ```deploy:staging``` and ```deploy:staging:zip```
+* ```grunt deploy:production``` Just like ```deploy:staging```, but without uploading it to a folder with a date and time.
+You can configure different settings for production than those that you use for staging.

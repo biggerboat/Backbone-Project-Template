@@ -11,3 +11,4 @@ To use the stylesheet you could use:
 .myClass {
 	@include var-sprite( my-asset-name-without-extension );
 }
+```

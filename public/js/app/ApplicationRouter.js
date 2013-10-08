@@ -24,35 +24,51 @@ require([
 
 	var ApplicationRouter = Backbone.CommandRouter.extend({
 
-		testView: null,
-
 		$el: null,
 
-		routes: {
-			"": ""
-		},
+		njs: null, //navigatorjs.Navigator
+		stateViewMap: null, //navigatorjs.integration.StateViewMap
+		stateUrlSyncer: null, //new navigatorjs.integration.StateUrlSyncer
+
+		routes: {"": ""},
 
 		initialize: function(options) {
 			this.$el = options.$el;
 
+			this.initializeNavigator();
 			this.initializeModels();
-			this.initializeViews();
-			this.addViews();
+			this.mapStates();
 			this.bindCommands();
 
+			var urlState = this.stateUrlSyncer.getUrlState();
+			this.njs.start(urlState);
+
 			this.injector.getInstance("testModel").set({name: 'Paul'});
+		},
+
+		initializeNavigator: function() {
+			this.njs = new navigatorjs.Navigator();
+			this.stateViewMap = new navigatorjs.integration.StateViewMap(this.njs, this.$el);
+
+			this.stateUrlSyncer = new navigatorjs.integration.StateUrlSyncer(this.njs);
+			this.stateUrlSyncer.usePushState();
+			this.stateUrlSyncer.start();
+
+			this.injector.map("njs").toValue(this.njs);
+
+			var debugConsole = new navigatorjs.features.DebugConsole(this.njs),
+				$debugConsole = debugConsole.get$El(),
+				cssPosition = {position: 'fixed', left: 10, bottom: 10};
+
+			$debugConsole.css(cssPosition).appendTo('body');
 		},
 
 		initializeModels: function() {
 			this.injector.map('testModel').toSingleton(TestModel);
 		},
 
-		initializeViews: function() {
-			this.testView = new TestView({injector: this.injector});
-		},
-
-		addViews: function() {
-			this.$el.append(this.testView.render().$el);
+		mapStates: function() {
+			this.stateViewMap.mapState("").toView(TestView).withArguments({injector:this.injector});
 		},
 
 		bindCommands: function() {

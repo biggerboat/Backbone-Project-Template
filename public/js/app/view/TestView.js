@@ -6,6 +6,8 @@ define([
 		className: 'testView',
 		template: Handlebars.compile(template),
 
+		navigatorBehaviors: [],
+
 		testModel: 'inject',
 
 		events: {

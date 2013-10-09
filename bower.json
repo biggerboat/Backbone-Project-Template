@@ -2,6 +2,7 @@
 	"name": "navigator-injector-backbone-command-setup",
 
 	"dependencies": {
+		"modernizr":"*",
 		"jquery":"*",
 		"requirejs":"*",
 		"requirejs-text":"*",

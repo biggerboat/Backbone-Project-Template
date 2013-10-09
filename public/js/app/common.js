@@ -2,6 +2,7 @@ requirejs.config({
 	paths:{
 		"vendors":"../vendors",
 		"text":"../vendors/requirejs-text/text",
+		"modernizr":"../vendors/modernizr/modernizr",
 		"jquery":"../vendors/jquery/jquery",
 		"handlebars":"../vendors/handlebars/handlebars",
 		"underscore":"../vendors/underscore/underscore",
@@ -81,6 +82,7 @@ requirejs.config({
 });
 
 define([
+	"modernizr",
 	"jquery",
 	"handlebars",
 	"underscore",

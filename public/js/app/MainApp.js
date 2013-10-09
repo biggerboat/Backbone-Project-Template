@@ -1,7 +1,7 @@
 requirejs.config({
 
 	hbs: {
-		templateExtension: 'hbs',
+		templateExtension: "hbs",
 		disableI18n: true,
 		disableHelpers: true //Disable the require-handlebars-plugin magic and use default handlebars behavior
 	},

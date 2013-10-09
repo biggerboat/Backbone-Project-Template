@@ -18,6 +18,7 @@ requirejs.config({
 		"TweenCSSPlugin":"../vendors/greensock-js/src/uncompressed/plugins/CSSPlugin",
 		"hammer":"../vendors/hammerjs/dist/hammer",
 		"jquery.hammer":"../vendors/hammerjs/dist/jquery.hammer",
+		"enquire":"../vendors/enquire/dist/enquire",
 		"templates":"../templates"
 	},
 
@@ -96,7 +97,8 @@ define([
 	"TweenLite",
 	"TweenEasePack",
 	"TweenCSSPlugin",
-	"jquery.hammer"
+	"jquery.hammer",
+	"enquire"
 ], function() {
 	//Enforce loading globally used libraries
 });

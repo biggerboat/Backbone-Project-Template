@@ -1,6 +1,4 @@
-require([
-	'common',
-
+define([
 	//VIEWS
 	'view/TestView',
 
@@ -12,8 +10,6 @@ require([
 
 	'util/isDebug'
 ], function(
-	common,
-
 	//VIEWS
 	TestView,
 
@@ -99,8 +95,5 @@ require([
 		}
 	});
 
-	$(function() {
-		var theRouter = new ApplicationRouter({$el: $("body")});
-		Backbone.history.start({});
-	});
+	return ApplicationRouter;
 });

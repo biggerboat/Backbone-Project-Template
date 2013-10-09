@@ -1,6 +1,6 @@
 define([
-	'common'
-], function(common) {
+
+], function() {
 	var OnTestModelChangedLogSomethingCommand = Backbone.Command.extend({
 
 		testModel: 'inject',

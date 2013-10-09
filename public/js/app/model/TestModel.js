@@ -1,6 +1,6 @@
 define([
-	'common'
-], function(common) {
+
+], function() {
 	var TestModel = Backbone.Model.extend({
 		defaults: {
 			name: 'Michiel'

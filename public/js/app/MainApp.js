@@ -34,6 +34,9 @@ requirejs.config({
 
 	// Sets the configuration for your third party scripts that are not AMD compatible
 	shim:{
+		"ApplicationRouter":{
+			"deps":["backbone"]
+		},
 
 		"injector-js":{
 			"exports":"injector.Injector"
@@ -88,7 +91,8 @@ requirejs.config({
 	}
 });
 
-define([
+require([
+	"ApplicationRouter",
 	"modernizr",
 	"console-polyfill",
 	"jquery",
@@ -106,6 +110,10 @@ define([
 	"jquery.hammer",
 	"enquire",
 	"stats"
-], function() {
-	//Enforce loading globally used libraries
+], function(ApplicationRouter) {
+	//Enforce loading globally used libraries and kicking application off
+
+	$(function() {
+		var theRouter = new ApplicationRouter({$el: $("body")});
+	});
 });

@@ -43,3 +43,6 @@ to make sure to configure the FTP settings to your need.
 * ```grunt deploy:staging:full``` This will both execute ```deploy:staging``` and ```deploy:staging:zip```
 * ```grunt deploy:production``` Just like ```deploy:staging```, but without uploading it to a folder with a date and time.
 You can configure different settings for production than those that you use for staging.
+
+## Support
+Feel free to create a [new issue](https://github.com/PaulTondeur/navigator-injector-backbone-command-setup/issues/new) for all your questions, issues or feature requests.

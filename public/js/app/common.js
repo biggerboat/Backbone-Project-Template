@@ -15,6 +15,8 @@ requirejs.config({
 		"TweenLite":"../vendors/greensock-js/src/uncompressed/TweenLite",
 		"TweenEasePack":"../vendors/greensock-js/src/uncompressed/easing/EasePack",
 		"TweenCSSPlugin":"../vendors/greensock-js/src/uncompressed/plugins/CSSPlugin",
+		"hammer":"../vendors/hammerjs/dist/hammer",
+		"jquery.hammer":"../vendors/hammerjs/dist/jquery.hammer",
 		"templates":"../templates"
 	},
 
@@ -70,6 +72,10 @@ requirejs.config({
 
 		"TweenCSSPlugin":{
 			"deps":["TweenLite"]
+		},
+
+		"jquery.hammer":{
+			"deps":["hammer"]
 		}
 	}
 });
@@ -87,7 +93,8 @@ define([
 	"backbone-recursive-tojson",
 	"TweenLite",
 	"TweenEasePack",
-	"TweenCSSPlugin"
+	"TweenCSSPlugin",
+	"jquery.hammer"
 ], function() {
 	//Enforce loading globally used libraries
 });

@@ -44,6 +44,10 @@ require([
 			this.mapStates();
 			this.bindCommands();
 
+			if(isDebug) {
+				this.addDebug();
+			}
+
 			var urlState = this.stateUrlSyncer.getUrlState();
 			this.njs.start(urlState);
 
@@ -59,14 +63,6 @@ require([
 			this.stateUrlSyncer.start();
 
 			this.injector.map("njs").toValue(this.njs);
-
-			if(isDebug) {
-				var debugConsole = new navigatorjs.features.DebugConsole(this.njs),
-					$debugConsole = debugConsole.get$El(),
-					cssPosition = {position: 'fixed', left: 10, bottom: 10};
-
-				$debugConsole.css(cssPosition).appendTo('body');
-			}
 		},
 
 		initializeModels: function() {
@@ -79,6 +75,27 @@ require([
 
 		bindCommands: function() {
 			this.bindCommand(this.injector.getInstance('testModel'), "change", OnTestModelChangedLogSomethingCommand);
+		},
+
+		addDebug: function() {
+			var debugConsole = new navigatorjs.features.DebugConsole(this.njs),
+				$debugConsole = debugConsole.get$El(),
+				cssPosition = {position: 'fixed', left: 10, bottom: 10};
+
+			$debugConsole.css(cssPosition).appendTo('body');
+
+			var stats = new Stats();
+
+			// Align top-left
+			stats.domElement.style.position = 'absolute';
+			stats.domElement.style.right = '10px';
+			stats.domElement.style.top = '10px';
+
+			document.body.appendChild( stats.domElement );
+
+			setInterval( function () {
+				stats.update();
+			}, 1000 / 60 );
 		}
 	});
 

@@ -37,7 +37,8 @@ module.exports = function (grunt) {
 					out: 'tmp/deploy/js/app/ApplicationRouter.min.js',
 
 					paths: {
-						"util/isDebug": "util/isDebug-production"
+						"util/isDebug": "util/isDebug-production",
+						"stats": "util/ignore"
 					}
 				}
 			}

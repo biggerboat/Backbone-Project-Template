@@ -19,6 +19,7 @@ requirejs.config({
 		"hammer":"../vendors/hammerjs/dist/hammer",
 		"jquery.hammer":"../vendors/hammerjs/dist/jquery.hammer",
 		"enquire":"../vendors/enquire/dist/enquire",
+		"stats":"../vendors/stats.js/src/Stats",
 		"templates":"../templates"
 	},
 
@@ -98,7 +99,8 @@ define([
 	"TweenEasePack",
 	"TweenCSSPlugin",
 	"jquery.hammer",
-	"enquire"
+	"enquire",
+	"stats"
 ], function() {
 	//Enforce loading globally used libraries
 });

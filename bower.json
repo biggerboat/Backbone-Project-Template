@@ -16,6 +16,7 @@
 		"backbone-recursive-toJSON": "*",
 		"greensock-js":"*",
 		"hammerjs":"*",
-		"enquire":"*"
+		"enquire":"*",
+		"stats.js":"*"
 	}
 }

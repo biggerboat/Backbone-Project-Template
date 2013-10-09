@@ -34,7 +34,11 @@ module.exports = function (grunt) {
 					baseUrl: 'public/js/app',
 					mainConfigFile: "public/js/app/common.js",
 					name: 'ApplicationRouter',
-					out: 'tmp/deploy/js/app/ApplicationRouter.min.js'
+					out: 'tmp/deploy/js/app/ApplicationRouter.min.js',
+
+					paths: {
+						"util/isDebug": "util/isDebug-production"
+					}
 				}
 			}
 		},

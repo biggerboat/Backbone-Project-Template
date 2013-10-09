@@ -8,8 +8,9 @@ require([
 	'model/TestModel',
 
 	//COMMANDS
-	'command/OnTestModelChangedLogSomethingCommand'
+	'command/OnTestModelChangedLogSomethingCommand',
 
+	'util/isDebug'
 ], function(
 	common,
 
@@ -20,7 +21,10 @@ require([
 	TestModel,
 
 	//COMMANDS
-	OnTestModelChangedLogSomethingCommand) {
+	OnTestModelChangedLogSomethingCommand,
+
+	isDebug
+	) {
 
 	var ApplicationRouter = Backbone.CommandRouter.extend({
 
@@ -56,11 +60,13 @@ require([
 
 			this.injector.map("njs").toValue(this.njs);
 
-			var debugConsole = new navigatorjs.features.DebugConsole(this.njs),
-				$debugConsole = debugConsole.get$El(),
-				cssPosition = {position: 'fixed', left: 10, bottom: 10};
+			if(isDebug) {
+				var debugConsole = new navigatorjs.features.DebugConsole(this.njs),
+					$debugConsole = debugConsole.get$El(),
+					cssPosition = {position: 'fixed', left: 10, bottom: 10};
 
-			$debugConsole.css(cssPosition).appendTo('body');
+				$debugConsole.css(cssPosition).appendTo('body');
+			}
 		},
 
 		initializeModels: function() {

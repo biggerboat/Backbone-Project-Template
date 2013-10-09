@@ -3,6 +3,7 @@
 
 	"dependencies": {
 		"modernizr":"*",
+		"console-polyfill":"*",
 		"jquery":"*",
 		"requirejs":"*",
 		"requirejs-text":"*",

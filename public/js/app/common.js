@@ -3,6 +3,7 @@ requirejs.config({
 		"vendors":"../vendors",
 		"text":"../vendors/requirejs-text/text",
 		"modernizr":"../vendors/modernizr/modernizr",
+		"console-polyfill":"../vendors/console-polyfill/index",
 		"jquery":"../vendors/jquery/jquery",
 		"handlebars":"../vendors/handlebars/handlebars",
 		"underscore":"../vendors/underscore/underscore",
@@ -85,6 +86,7 @@ requirejs.config({
 
 define([
 	"modernizr",
+	"console-polyfill",
 	"jquery",
 	"handlebars",
 	"underscore",

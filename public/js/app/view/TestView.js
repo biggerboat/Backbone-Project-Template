@@ -1,10 +1,9 @@
 define([
-	'text!templates/TestView.html',
+	'hbs!templates/TestView',
 	'common'
 ], function(template, common) {
 	var TestView = Backbone.View.extend({
 		className: 'testView',
-		template: Handlebars.compile(template),
 
 		navigatorBehaviors: ["IHasStateTransition"],
 
@@ -18,7 +17,7 @@ define([
 		},
 
 		render: function() {
-			this.$el.html(this.template(this.testModel.toJSON()));
+			this.$el.html(template(this.testModel.toJSON()));
 
 			return this;
 		},

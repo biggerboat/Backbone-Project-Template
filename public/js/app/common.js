@@ -1,11 +1,19 @@
 requirejs.config({
+
+	hbs : {
+		templateExtension : 'hbs',
+		disableI18n : true
+	},
+
 	paths:{
 		"vendors":"../vendors",
-		"text":"../vendors/requirejs-text/text",
+		"hbs":"../vendors/require-handlebars-plugin/hbs",
+		"handlebars" : "../vendors/require-handlebars-plugin/Handlebars",
+		"i18nprecompile" : "../vendors/require-handlebars-plugin/hbs/i18nprecompile",
+		"json2" : "../vendors/require-handlebars-plugin/hbs/json2",
 		"modernizr":"../vendors/modernizr/modernizr",
 		"console-polyfill":"../vendors/console-polyfill/index",
 		"jquery":"../vendors/jquery/jquery",
-		"handlebars":"../vendors/handlebars/handlebars",
 		"underscore":"../vendors/underscore/underscore",
 		"backbone":"../vendors/backbone/backbone",
 		"injector-js":"../vendors/injector.js/injector-js",
@@ -26,10 +34,6 @@ requirejs.config({
 
 	// Sets the configuration for your third party scripts that are not AMD compatible
 	shim:{
-
-		"handlebars":{
-			"exports":"Handlebars"
-		},
 
 		"injector-js":{
 			"exports":"injector.Injector"
@@ -88,7 +92,6 @@ define([
 	"modernizr",
 	"console-polyfill",
 	"jquery",
-	"handlebars",
 	"underscore",
 	"backbone",
 	"injector-js",

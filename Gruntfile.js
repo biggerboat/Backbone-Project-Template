@@ -39,6 +39,13 @@ module.exports = function (grunt) {
 					paths: {
 						"util/isDebug": "util/isDebug-production",
 						"stats": "util/ignore"
+					},
+
+					pragmasOnSave: {
+						//Exclude Handlebars as much as possible from the build
+						excludeHbsParser : true,
+						excludeHbs: true,
+						excludeAfterBuild: true
 					}
 				}
 			}

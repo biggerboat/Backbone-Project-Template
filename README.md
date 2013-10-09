@@ -44,5 +44,9 @@ to make sure to configure the FTP settings to your need.
 * ```grunt deploy:production``` Just like ```deploy:staging```, but without uploading it to a folder with a date and time.
 You can configure different settings for production than those that you use for staging.
 
+## Compass
+For compiling the scss files, you need at least [Compass](http://compass-style.org/install/) to be installed together with
+[Compass H5bp](https://github.com/sporkd/compass-h5bp). Please refer to these resources for instructions on how to install these.
+
 ## Support
 Feel free to create a [new issue](https://github.com/PaulTondeur/navigator-injector-backbone-command-setup/issues/new) for all your questions, issues or feature requests.

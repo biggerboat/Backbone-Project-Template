@@ -48,5 +48,23 @@ You can configure different settings for production than those that you use for 
 For compiling the scss files, you need at least [Compass](http://compass-style.org/install/) to be installed together with
 [Compass H5bp](https://github.com/sporkd/compass-h5bp). Please refer to these resources for instructions on how to install these.
 
+## Release or develop version detection
+In order to detect whether or not we run develop or release mode you could load the util/isDebug module. This module returns true
+when we are developing and running the project directly from source. It returns false after a build.
+```JavaScript
+define(['util/isDebug'], function(isDebug) {
+
+	var YourModule = function() {
+		if(isDebug) {
+			// add your debug windows/execute debug stuff
+		}
+	};
+
+	return YourModule;
+});
+```
+Note that we already automatically detect this within the ```ApplicationRouter```. While developing you will see stats
+in the upper right corner and the ```DebugConsole``` that is packed with navigator.js
+
 ## Support
 Feel free to create a [new issue](https://github.com/PaulTondeur/navigator-injector-backbone-command-setup/issues/new) for all your questions, issues or feature requests.

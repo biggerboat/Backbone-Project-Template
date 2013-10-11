@@ -6,9 +6,10 @@ This project functions as a boilerplate for projects that make use of:
 * [grunt](https://github.com/gruntjs/grunt)
 * [compass](https://github.com/chriseppstein/compass)
 * [jquery](https://github.com/jquery/jquery)
+* [modernizr](https://github.com/Modernizr/Modernizr)
+* [console-polyfill](https://github.com/paulmillr/console-polyfill)
 * [requirejs](https://github.com/jrburke/requirejs)
-* [requirejs-text](https://github.com/requirejs/text)
-* [handlebars](https://github.com/wycats/handlebars.js)
+* [require-handlebars-plugin](https://github.com/SlexAxton/require-handlebars-plugin)
 * [navigator.js](https://github.com/biggerboat/navigator.js)
 * [injector.js](https://github.com/biggerboat/injector.js)
 * [underscore](https://github.com/jashkenas/underscore)
@@ -18,6 +19,16 @@ This project functions as a boilerplate for projects that make use of:
 * [backbone-command](https://github.com/biggerboat/backbone-command)
 * [backbone-recursive-toJSON](https://github.com/biggerboat/backbone-recursive-toJSON)
 * [greensock-js](https://github.com/greensock/GreenSock-JS/)
+* [hammerjs](https://github.com/EightMedia/hammer.js)
+* [enquire](https://github.com/WickyNilliams/enquire.js/)
+* [stats.js](https://github.com/mrdoob/stats.js/)
+
+"modernizr":"*",
+"console-polyfill":"*",
+"require-handlebars-plugin":"*",
+"hammerjs":"*",
+"enquire":"*",
+"stats.js":"*"
 
 Bower is used to load all the required dependencies for the frontend. Initially you should run ```bower install```
 from within the root of this project. This will download all the required frontend dependencies into ```public/js/vendors```

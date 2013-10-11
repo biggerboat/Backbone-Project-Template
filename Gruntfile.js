@@ -71,7 +71,7 @@ module.exports = function (grunt) {
 		},
 
 		concurrent: {
-			dev: ['serve:dev', 'watch:dev', 'watch:sass']
+			dev: ['serve:dev', 'watch']
 		},
 
 		connect: {
@@ -112,14 +112,23 @@ module.exports = function (grunt) {
 		},
 
 		watch: {
+			options: {
+				livereload: true
+			},
+
 			dev: {
-				files: ['public/**/*', '!public/js/vendors/**'],
-				options: {
-					livereload: true
-				}
+				files: ['public/**/*', '!public/css/**', '!public/js/vendors/**'],
+			},
+
+			css: {
+				files: ['public/css/**'],
 			},
 
 			sass: {
+				options: {
+					livereload: false
+				},
+
 				files:['sass/**/*'],
 				tasks:["compass:dev"]
 			}

@@ -23,13 +23,6 @@ This project functions as a boilerplate for projects that make use of:
 * [enquire](https://github.com/WickyNilliams/enquire.js/)
 * [stats.js](https://github.com/mrdoob/stats.js/)
 
-"modernizr":"*",
-"console-polyfill":"*",
-"require-handlebars-plugin":"*",
-"hammerjs":"*",
-"enquire":"*",
-"stats.js":"*"
-
 Bower is used to load all the required dependencies for the frontend. Initially you should run ```bower install```
 from within the root of this project. This will download all the required frontend dependencies into ```public/js/vendors```
 

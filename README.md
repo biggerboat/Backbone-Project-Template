@@ -33,7 +33,7 @@ creates a live-reload server (make sure you do NOT have the live-reload app open
 recompiles your css files upon any changes. When developing this is the task you would want to have running in the background.
 * ```grunt deploy``` This will create a clean build for you in the tmp/deploy folder. All js files will be minified using
 the r.js optimizer and compass makes a clean compile. All the files that will no longer be needed after this compile will be omitted
-from the tmp/deploy folder. It also alters the index.html file in order to reference the correct minimized application.
+from the tmp/deploy folder. It also alters the index.html file in order to reference the correct minimized and cache busted application.
 * ```grunt deploy:zip``` This is essentially the same as ```grunt deploy```, but on top of that it will create a zipfile for you.
 Easy for sharing with your client!
 * ```grunt deploy:local``` This makes a deploy and serves the deployed file from disk. This way you could locally verify

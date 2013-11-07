@@ -7,7 +7,7 @@ module.exports = function (grunt) {
 		clean: {
 			tmp:["tmp/"],
 			'tmp-js':["tmp/deploy/js"],
-			'compass-generated':["public/css","public/images/generated"],
+			'compass-generated':["public/css/*.css","public/images/generated"],
 			'tmp-spritesheets':["tmp/deploy/images/spritesheets"]
 		},
 

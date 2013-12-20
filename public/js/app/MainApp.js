@@ -54,7 +54,7 @@ requirejs.config({
 
 		"backbone": {
 			"deps": ["underscore", "jquery"],
-			"exports": "Backbone"  //attaches "Backbone" to the window object
+			"exports": "Backbone"  //detects Backbone is loaded by checking "Backbone" on the window object.
 		},
 
 		"backbone-super": {

@@ -19,9 +19,6 @@ This project functions as a boilerplate for projects that make use of:
 * [backbone-command](https://github.com/biggerboat/backbone-command)
 * [backbone-recursive-toJSON](https://github.com/biggerboat/backbone-recursive-toJSON)
 * [greensock-js](https://github.com/greensock/GreenSock-JS/)
-* [hammerjs](https://github.com/EightMedia/hammer.js)
-* [enquire](https://github.com/WickyNilliams/enquire.js/)
-* [stats.js](https://github.com/mrdoob/stats.js/)
 
 Bower is used to load all the required dependencies for the frontend. Initially you should run ```bower install```
 from within the root of this project. This will download all the required frontend dependencies into ```public/js/vendors```
@@ -58,13 +55,11 @@ when we are developing and running the project directly from source. It returns 
 ```JavaScript
 define(['util/isDebug'], function(isDebug) {
 
-	var YourModule = function() {
+	return function() {
 		if(isDebug) {
 			// add your debug windows/execute debug stuff
 		}
 	};
-
-	return YourModule;
 });
 ```
 Note that we already automatically detect this within the ```ApplicationRouter```. While developing you will see stats

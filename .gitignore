@@ -3,7 +3,7 @@
 .DS_Store
 .sass-cache
 node_modules
-public/js/vendors/
+public/js/vendor/
 public/css/
 public/images/generated/
 /tmp/

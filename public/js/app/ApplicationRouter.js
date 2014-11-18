@@ -1,19 +1,10 @@
 define([
-    //VIEWS
     'view/TestView',
-
-    //MODELS
     'model/TestModel',
-
-    //COMMANDS
     'command/OnTestModelChangedLogSomethingCommand',
-
     'util/isDebug'
-], function(//VIEWS
-            TestView,
-            //MODELS
+], function(TestView,
             TestModel,
-            //COMMANDS
             OnTestModelChangedLogSomethingCommand,
             isDebug) {
 

@@ -50,7 +50,7 @@ requirejs.config({
 
         "backbone": {
             "deps": ["underscore", "jquery"],
-            "exports": "Backbone"  //detects Backbone is loaded by checking "Backbone" on the window object.
+            "exports": "Backbone"  //links the window.Backbone object when you Require 'backbone' in the top of a file.
         },
 
         "backbone-super": {

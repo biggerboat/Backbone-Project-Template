@@ -1,4 +1,5 @@
 requirejs.config({
+    baseurl: 'js/app',
 
     hbs: {
         templateExtension: 'hbs',
@@ -7,7 +8,6 @@ requirejs.config({
     },
 
     paths: {
-        'vendor': '../vendor',
         'templates': '../templates',
         'hbs': '../vendor/require-handlebars-plugin/hbs',
         'handlebars': '../vendor/require-handlebars-plugin/Handlebars',
@@ -36,7 +36,7 @@ requirejs.config({
         },
 
         'injector-js': {
-            'exports': 'injector.Injector'
+            'exports': 'injector'
         },
 
         'navigator-js': {

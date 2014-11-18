@@ -53,7 +53,7 @@ define([
         },
 
         mapStates: function() {
-            this.stateViewMap.mapState('').toView(TestView).withArguments({injector: this.injector});
+            this.stateViewMap.mapState('/').toView(TestView).withArguments({injector: this.injector});
         },
 
         bindCommands: function() {

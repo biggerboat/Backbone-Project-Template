@@ -22,17 +22,18 @@ define([
         },
 
         transitionIn: function(callOnComplete) {
-            TweenLite.fromTo(this.$el,
+            TweenLite.fromTo(
+                this.$el,
                 1.5,
                 {alpha: 0},
-                {
-                    alpha: 1,
-                    onComplete: callOnComplete
-                });
+                {alpha: 1, onComplete: callOnComplete});
         },
 
         transitionOut: function(callOnComplete) {
-            TweenLite.to(this.$el, 1.5, {alpha: 0, onComplete: callOnComplete});
+            TweenLite.to(
+                this.$el,
+                1.5,
+                {alpha: 0, onComplete: callOnComplete});
         }
     });
 });

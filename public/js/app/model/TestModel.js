@@ -1,9 +1,7 @@
 define([], function() {
-    var TestModel = Backbone.Model.extend({
+    return Backbone.Model.extend({
         defaults: {
             name: 'Michiel'
         }
     });
-
-    return TestModel;
 });

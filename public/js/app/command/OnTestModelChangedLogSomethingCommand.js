@@ -1,5 +1,5 @@
 define([], function() {
-    var OnTestModelChangedLogSomethingCommand = Backbone.Command.extend({
+    return Backbone.Command.extend({
 
         testModel: 'inject',
 
@@ -14,6 +14,4 @@ define([], function() {
                 theCurrentName);
         }
     });
-
-    return OnTestModelChangedLogSomethingCommand;
 });

@@ -1,7 +1,7 @@
 define([
     'hbs!templates/TestView'
 ], function(template) {
-    var TestView = Backbone.View.extend({
+    return Backbone.View.extend({
         className: 'testView',
 
         navigatorBehaviors: ["IHasStateTransition"],
@@ -34,6 +34,4 @@ define([
             TweenLite.to(this.$el, 1.5, {alpha: 0, onComplete: callOnComplete});
         }
     });
-
-    return TestView;
 });

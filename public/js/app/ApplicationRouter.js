@@ -8,7 +8,7 @@ define([
             OnTestModelChangedLogSomethingCommand,
             isDebug) {
 
-    var ApplicationRouter = Backbone.CommandRouter.extend({
+    return Backbone.CommandRouter.extend({
 
         el: 'body',
 
@@ -68,6 +68,4 @@ define([
             $debugConsole.css(cssPosition).appendTo('body');
         }
     });
-
-    return ApplicationRouter;
 });

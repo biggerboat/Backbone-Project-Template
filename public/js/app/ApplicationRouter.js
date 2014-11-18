@@ -2,11 +2,13 @@ define([
     'view/TestView',
     'model/TestModel',
     'command/OnTestModelChangedLogSomethingCommand',
-    'util/isDebug'
+    'util/isDebug',
+    'navigator-js'
 ], function(TestView,
             TestModel,
             OnTestModelChangedLogSomethingCommand,
-            isDebug) {
+            isDebug,
+            navigatorjs) {
 
     return Backbone.CommandRouter.extend({
 
@@ -55,7 +57,8 @@ define([
         },
 
         bindCommands: function() {
-            this.bindCommand(this.injector.getInstance('testModel'),
+            this.bindCommand(
+                this.injector.getInstance('testModel'),
                 "change",
                 OnTestModelChangedLogSomethingCommand);
         },

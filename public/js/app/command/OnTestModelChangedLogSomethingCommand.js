@@ -7,7 +7,8 @@ define([], function() {
             var thePrevName = this.testModel.previous('name'),
                 theCurrentName = this.testModel.get('name');
 
-            console.log('OnTestModelChangedLogSomethingCommand -> execute',
+            console.log(
+                'OnTestModelChangedLogSomethingCommand -> execute',
                 'name changed from',
                 thePrevName,
                 'to name:',

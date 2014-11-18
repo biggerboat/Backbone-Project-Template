@@ -41,7 +41,7 @@ requirejs.config({
 
         "navigator-js": {
             "deps": ["jquery"],
-            "exports": "navigatorjs.Navigator"
+            "exports": "navigatorjs"
         },
 
         "underscore": {

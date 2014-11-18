@@ -18,7 +18,7 @@ define([
         stateViewMap: null, //navigatorjs.integration.StateViewMap
         stateUrlSyncer: null, //new navigatorjs.integration.StateUrlSyncer
 
-        routes: {"": ""},
+        routes: {'': ''},
 
         initialize: function() {
             this.initializeNavigator();
@@ -33,7 +33,7 @@ define([
             var urlState = this.stateUrlSyncer.getUrlState();
             this.njs.start(urlState);
 
-            this.injector.getInstance("testModel").set({name: 'Paul'});
+            this.injector.getInstance('testModel').set({name: 'Paul'});
         },
 
         initializeNavigator: function() {
@@ -45,7 +45,7 @@ define([
             this.stateUrlSyncer.usePushState();
             this.stateUrlSyncer.start();
 
-            this.injector.map("njs").toValue(this.njs);
+            this.injector.map('njs').toValue(this.njs);
         },
 
         initializeModels: function() {
@@ -53,13 +53,13 @@ define([
         },
 
         mapStates: function() {
-            this.stateViewMap.mapState("").toView(TestView).withArguments({injector: this.injector});
+            this.stateViewMap.mapState('').toView(TestView).withArguments({injector: this.injector});
         },
 
         bindCommands: function() {
             this.bindCommand(
                 this.injector.getInstance('testModel'),
-                "change",
+                'change',
                 OnTestModelChangedLogSomethingCommand);
         },
 

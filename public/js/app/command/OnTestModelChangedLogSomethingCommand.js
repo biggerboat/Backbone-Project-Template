@@ -1,4 +1,6 @@
-define([], function() {
+define([
+    'backbone-command'
+], function(Backbone) {
     return Backbone.Command.extend({
 
         testModel: 'inject',

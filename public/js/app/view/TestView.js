@@ -5,7 +5,7 @@ define([
     return Backbone.View.extend({
         className: 'testView',
 
-        navigatorBehaviors: ["IHasStateTransition"],
+        navigatorBehaviors: ['IHasStateTransition'],
 
         testModel: 'inject',
 

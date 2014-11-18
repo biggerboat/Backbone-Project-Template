@@ -1,11 +1,9 @@
-define([
+define([], function() {
+    var TestModel = Backbone.Model.extend({
+        defaults: {
+            name: 'Michiel'
+        }
+    });
 
-], function() {
-	var TestModel = Backbone.Model.extend({
-		defaults: {
-			name: 'Michiel'
-		}
-	});
-
-	return TestModel;
+    return TestModel;
 });

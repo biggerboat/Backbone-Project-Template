@@ -1,34 +1,39 @@
 define([
-	'hbs!templates/TestView'
+    'hbs!templates/TestView'
 ], function(template) {
-	var TestView = Backbone.View.extend({
-		className: 'testView',
+    var TestView = Backbone.View.extend({
+        className: 'testView',
 
-		navigatorBehaviors: ["IHasStateTransition"],
+        navigatorBehaviors: ["IHasStateTransition"],
 
-		testModel: 'inject',
+        testModel: 'inject',
 
-		events: {
-		},
+        events: {},
 
-		initialize: function() {
-			this.listenTo(this.testModel, 'change:name', this.render);
-		},
+        initialize: function() {
+            this.listenTo(this.testModel, 'change:name', this.render);
+        },
 
-		render: function() {
-			this.$el.html(template(this.testModel.toJSON()));
+        render: function() {
+            this.$el.html(template(this.testModel.toJSON()));
 
-			return this;
-		},
+            return this;
+        },
 
-		transitionIn: function(callOnComplete) {
-			TweenLite.fromTo(this.$el, 1.5, {alpha:0},{alpha:1, onComplete:callOnComplete});
-		},
+        transitionIn: function(callOnComplete) {
+            TweenLite.fromTo(this.$el,
+                1.5,
+                {alpha: 0},
+                {
+                    alpha: 1,
+                    onComplete: callOnComplete
+                });
+        },
 
-		transitionOut: function(callOnComplete) {
-			TweenLite.to(this.$el, 1.5, {alpha:0, onComplete:callOnComplete});
-		}
-	});
+        transitionOut: function(callOnComplete) {
+            TweenLite.to(this.$el, 1.5, {alpha: 0, onComplete: callOnComplete});
+        }
+    });
 
-	return TestView;
+    return TestView;
 });

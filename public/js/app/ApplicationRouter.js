@@ -1,99 +1,97 @@
 define([
-	//VIEWS
-	'view/TestView',
+    //VIEWS
+    'view/TestView',
 
-	//MODELS
-	'model/TestModel',
+    //MODELS
+    'model/TestModel',
 
-	//COMMANDS
-	'command/OnTestModelChangedLogSomethingCommand',
+    //COMMANDS
+    'command/OnTestModelChangedLogSomethingCommand',
 
-	'util/isDebug'
-], function(
-	//VIEWS
-	TestView,
+    'util/isDebug'
+], function(//VIEWS
+            TestView,
+            //MODELS
+            TestModel,
+            //COMMANDS
+            OnTestModelChangedLogSomethingCommand,
+            isDebug) {
 
-	//MODELS
-	TestModel,
+    var ApplicationRouter = Backbone.CommandRouter.extend({
 
-	//COMMANDS
-	OnTestModelChangedLogSomethingCommand,
+        $el: null,
 
-	isDebug
-	) {
+        njs: null, //navigatorjs.Navigator
+        stateViewMap: null, //navigatorjs.integration.StateViewMap
+        stateUrlSyncer: null, //new navigatorjs.integration.StateUrlSyncer
 
-	var ApplicationRouter = Backbone.CommandRouter.extend({
+        routes: {"": ""},
 
-		$el: null,
+        initialize: function(options) {
+            this.$el = options.$el;
 
-		njs: null, //navigatorjs.Navigator
-		stateViewMap: null, //navigatorjs.integration.StateViewMap
-		stateUrlSyncer: null, //new navigatorjs.integration.StateUrlSyncer
+            this.initializeNavigator();
+            this.initializeModels();
+            this.mapStates();
+            this.bindCommands();
 
-		routes: {"": ""},
+            if (isDebug) {
+                this.addDebug();
+            }
 
-		initialize: function(options) {
-			this.$el = options.$el;
+            var urlState = this.stateUrlSyncer.getUrlState();
+            this.njs.start(urlState);
 
-			this.initializeNavigator();
-			this.initializeModels();
-			this.mapStates();
-			this.bindCommands();
+            this.injector.getInstance("testModel").set({name: 'Paul'});
+        },
 
-			if(isDebug) {
-				this.addDebug();
-			}
+        initializeNavigator: function() {
+            this.njs = new navigatorjs.Navigator();
+            this.stateViewMap = new navigatorjs.integration.StateViewMap(this.njs,
+                this.$el);
 
-			var urlState = this.stateUrlSyncer.getUrlState();
-			this.njs.start(urlState);
+            this.stateUrlSyncer = new navigatorjs.integration.StateUrlSyncer(this.njs);
+            this.stateUrlSyncer.usePushState();
+            this.stateUrlSyncer.start();
 
-			this.injector.getInstance("testModel").set({name: 'Paul'});
-		},
+            this.injector.map("njs").toValue(this.njs);
+        },
 
-		initializeNavigator: function() {
-			this.njs = new navigatorjs.Navigator();
-			this.stateViewMap = new navigatorjs.integration.StateViewMap(this.njs, this.$el);
+        initializeModels: function() {
+            this.injector.map('testModel').toSingleton(TestModel);
+        },
 
-			this.stateUrlSyncer = new navigatorjs.integration.StateUrlSyncer(this.njs);
-			this.stateUrlSyncer.usePushState();
-			this.stateUrlSyncer.start();
+        mapStates: function() {
+            this.stateViewMap.mapState("").toView(TestView).withArguments({injector: this.injector});
+        },
 
-			this.injector.map("njs").toValue(this.njs);
-		},
+        bindCommands: function() {
+            this.bindCommand(this.injector.getInstance('testModel'),
+                "change",
+                OnTestModelChangedLogSomethingCommand);
+        },
 
-		initializeModels: function() {
-			this.injector.map('testModel').toSingleton(TestModel);
-		},
+        addDebug: function() {
+            var debugConsole = new navigatorjs.features.DebugConsole(this.njs),
+                $debugConsole = debugConsole.get$El(),
+                cssPosition = {position: 'fixed', left: 10, bottom: 10};
 
-		mapStates: function() {
-			this.stateViewMap.mapState("").toView(TestView).withArguments({injector:this.injector});
-		},
+            $debugConsole.css(cssPosition).appendTo('body');
 
-		bindCommands: function() {
-			this.bindCommand(this.injector.getInstance('testModel'), "change", OnTestModelChangedLogSomethingCommand);
-		},
+            var stats = new Stats();
 
-		addDebug: function() {
-			var debugConsole = new navigatorjs.features.DebugConsole(this.njs),
-				$debugConsole = debugConsole.get$El(),
-				cssPosition = {position: 'fixed', left: 10, bottom: 10};
+            // Align top-left
+            stats.domElement.style.position = 'absolute';
+            stats.domElement.style.right = '10px';
+            stats.domElement.style.top = '10px';
 
-			$debugConsole.css(cssPosition).appendTo('body');
+            document.body.appendChild(stats.domElement);
 
-			var stats = new Stats();
+            setInterval(function() {
+                stats.update();
+            }, 1000 / 60);
+        }
+    });
 
-			// Align top-left
-			stats.domElement.style.position = 'absolute';
-			stats.domElement.style.right = '10px';
-			stats.domElement.style.top = '10px';
-
-			document.body.appendChild( stats.domElement );
-
-			setInterval( function () {
-				stats.update();
-			}, 1000 / 60 );
-		}
-	});
-
-	return ApplicationRouter;
+    return ApplicationRouter;
 });

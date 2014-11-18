@@ -1,17 +1,19 @@
-define([
+define([], function() {
+    var OnTestModelChangedLogSomethingCommand = Backbone.Command.extend({
 
-], function() {
-	var OnTestModelChangedLogSomethingCommand = Backbone.Command.extend({
+        testModel: 'inject',
 
-		testModel: 'inject',
+        execute: function() {
+            var thePrevName = this.testModel.previous('name'),
+                theCurrentName = this.testModel.get('name');
 
-		execute: function() {
-			var thePrevName = this.testModel.previous('name'),
-				theCurrentName = this.testModel.get('name');
+            console.log('OnTestModelChangedLogSomethingCommand -> execute',
+                'name changed from',
+                thePrevName,
+                'to name:',
+                theCurrentName);
+        }
+    });
 
-			console.log('OnTestModelChangedLogSomethingCommand -> execute', 'name changed from', thePrevName, 'to name:', theCurrentName);
-		}
-	});
-
-	return OnTestModelChangedLogSomethingCommand;
+    return OnTestModelChangedLogSomethingCommand;
 });

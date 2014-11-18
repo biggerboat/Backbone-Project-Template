@@ -102,8 +102,5 @@ require([
     "TweenCSSPlugin"
 ], function(ApplicationRouter) {
     //Enforce loading globally used libraries and kicking application off
-
-    $(function() {
-        var theRouter = new ApplicationRouter({$el: $("body")});
-    });
+    new ApplicationRouter();
 });

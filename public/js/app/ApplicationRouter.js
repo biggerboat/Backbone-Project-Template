@@ -10,7 +10,7 @@ define([
 
     var ApplicationRouter = Backbone.CommandRouter.extend({
 
-        $el: null,
+        el: 'body',
 
         njs: null, //navigatorjs.Navigator
         stateViewMap: null, //navigatorjs.integration.StateViewMap
@@ -18,9 +18,7 @@ define([
 
         routes: {"": ""},
 
-        initialize: function(options) {
-            this.$el = options.$el;
-
+        initialize: function() {
             this.initializeNavigator();
             this.initializeModels();
             this.mapStates();

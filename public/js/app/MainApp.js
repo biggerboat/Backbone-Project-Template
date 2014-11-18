@@ -32,7 +32,7 @@ requirejs.config({
     // Sets the configuration for your third party scripts that are not AMD compatible
     shim: {
         'ApplicationRouter': {
-            'deps': ['backbone']
+            'deps': ['backbone-injector']
         },
 
         'injector-js': {
@@ -71,36 +71,14 @@ requirejs.config({
         },
 
         'TweenLite': {
-            'exports': 'TweenLite'
-        },
-
-        'TweenEasePack': {
-            'deps': ['TweenLite']
-        },
-
-        'TweenCSSPlugin': {
-            'deps': ['TweenLite']
+            'exports': 'TweenLite',
+            'deps': ['TweenEasePack', 'TweenCSSPlugin']
         }
     }
 });
 
 require([
-    'ApplicationRouter',
-    'modernizr',
-    'console-polyfill',
-    'jquery',
-    'underscore',
-    'backbone',
-    'injector-js',
-    'navigator-js',
-    'backbone-super',
-    'backbone-command',
-    'backbone-injector',
-    'backbone-recursive-tojson',
-    'TweenLite',
-    'TweenEasePack',
-    'TweenCSSPlugin'
+    'ApplicationRouter'
 ], function(ApplicationRouter) {
-    //Enforce loading globally used libraries and kicking application off
     new ApplicationRouter();
 });

@@ -8,13 +8,14 @@ requirejs.config({
 
     paths: {
         "vendor": "../vendor",
+        "templates": "../templates",
         "hbs": "../vendor/require-handlebars-plugin/hbs",
         "handlebars": "../vendor/require-handlebars-plugin/Handlebars",
         "i18nprecompile": "../vendor/require-handlebars-plugin/hbs/i18nprecompile",
         "json2": "../vendor/require-handlebars-plugin/hbs/json2",
         "modernizr": "../vendor/modernizr/modernizr",
         "console-polyfill": "../vendor/console-polyfill/index",
-        "jquery": "../vendor/jquery/jquery",
+        "jquery": "../vendor/jquery/dist/jquery",
         "underscore": "../vendor/underscore/underscore",
         "backbone": "../vendor/backbone/backbone",
         "injector-js": "../vendor/injector.js/injector-js",
@@ -25,12 +26,7 @@ requirejs.config({
         "backbone-recursive-tojson": "../vendor/backbone-recursive-toJSON/backbone-recursive-tojson",
         "TweenLite": "../vendor/greensock-js/src/uncompressed/TweenLite",
         "TweenEasePack": "../vendor/greensock-js/src/uncompressed/easing/EasePack",
-        "TweenCSSPlugin": "../vendor/greensock-js/src/uncompressed/plugins/CSSPlugin",
-        "hammer": "../vendor/hammerjs/dist/hammer",
-        "jquery.hammer": "../vendor/hammerjs/dist/jquery.hammer",
-        "enquire": "../vendor/enquire/dist/enquire",
-        "stats": "../vendor/stats.js/src/Stats",
-        "templates": "../templates"
+        "TweenCSSPlugin": "../vendor/greensock-js/src/uncompressed/plugins/CSSPlugin"
     },
 
     // Sets the configuration for your third party scripts that are not AMD compatible
@@ -84,10 +80,6 @@ requirejs.config({
 
         "TweenCSSPlugin": {
             "deps": ["TweenLite"]
-        },
-
-        "jquery.hammer": {
-            "deps": ["hammer"]
         }
     }
 });
@@ -107,10 +99,7 @@ require([
     "backbone-recursive-tojson",
     "TweenLite",
     "TweenEasePack",
-    "TweenCSSPlugin",
-    "jquery.hammer",
-    "enquire",
-    "stats"
+    "TweenCSSPlugin"
 ], function(ApplicationRouter) {
     //Enforce loading globally used libraries and kicking application off
 

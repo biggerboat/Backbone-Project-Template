@@ -1,22 +1,19 @@
 {
-	"name": "navigator-injector-backbone-command-setup",
+    "name": "navigator-injector-backbone-command-setup",
 
-	"dependencies": {
-		"modernizr":"*",
-		"console-polyfill":"*",
-		"jquery":"*",
-		"requirejs":"*",
-		"require-handlebars-plugin":"*",
-		"navigator.js":"*",
-		"underscore":"*",
-		"backbone":"*",
-		"backbone-super":"*",
-		"backbone-injector":"*",
-		"backbone-command":"*",
-		"backbone-recursive-toJSON": "*",
-		"greensock-js":"*",
-		"hammerjs":"*",
-		"enquire":"*",
-		"stats.js":"*"
-	}
+    "dependencies": {
+        "modernizr":"*",
+        "console-polyfill":"*",
+        "jquery":"*",
+        "requirejs":"*",
+        "require-handlebars-plugin":"*",
+        "navigator.js":"*",
+        "underscore":"*",
+        "backbone":"*",
+        "backbone-super":"*",
+        "backbone-injector":"*",
+        "backbone-command":"*",
+        "backbone-recursive-toJSON": "*",
+        "greensock-js":"*"
+    }
 }

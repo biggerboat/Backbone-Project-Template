@@ -77,19 +77,6 @@ define([
                 cssPosition = {position: 'fixed', left: 10, bottom: 10};
 
             $debugConsole.css(cssPosition).appendTo('body');
-
-            var stats = new Stats();
-
-            // Align top-left
-            stats.domElement.style.position = 'absolute';
-            stats.domElement.style.right = '10px';
-            stats.domElement.style.top = '10px';
-
-            document.body.appendChild(stats.domElement);
-
-            setInterval(function() {
-                stats.update();
-            }, 1000 / 60);
         }
     });
 

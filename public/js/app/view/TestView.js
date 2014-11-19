@@ -1,7 +1,8 @@
 define([
+    'backbone',
     'hbs!templates/TestView',
     'TweenLite'
-], function(template, TweenLite) {
+], function(Backbone, template, TweenLite) {
     return Backbone.View.extend({
         className: 'testView',
 

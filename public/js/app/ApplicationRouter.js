@@ -1,14 +1,16 @@
 define([
+    'backbone',
+    'navigator-js',
     'view/TestView',
     'model/TestModel',
     'command/OnTestModelChangedLogSomethingCommand',
-    'util/isDebug',
-    'navigator-js'
-], function(TestView,
+    'util/isDebug'
+], function(Backbone,
+            navigatorjs,
+            TestView,
             TestModel,
             OnTestModelChangedLogSomethingCommand,
-            isDebug,
-            navigatorjs) {
+            isDebug) {
 
     return Backbone.CommandRouter.extend({
 
@@ -38,9 +40,7 @@ define([
 
         initializeNavigator: function() {
             this.njs = new navigatorjs.Navigator();
-            this.stateViewMap = new navigatorjs.integration.StateViewMap(this.njs,
-                this.$el);
-
+            this.stateViewMap = new navigatorjs.integration.StateViewMap(this.njs, this.$el);
             this.stateUrlSyncer = new navigatorjs.integration.StateUrlSyncer(this.njs);
             this.stateUrlSyncer.usePushState();
             this.stateUrlSyncer.start();

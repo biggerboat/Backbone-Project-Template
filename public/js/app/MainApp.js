@@ -24,9 +24,9 @@ requirejs.config({
         'backbone-command': '../vendor/backbone-command/backbone-command',
         'backbone-injector': '../vendor/backbone-injector/backbone-injector',
         'backbone-recursive-tojson': '../vendor/backbone-recursive-toJSON/backbone-recursive-tojson',
-        'TweenLite': '../vendor/greensock-js/src/uncompressed/TweenLite',
-        'TweenEasePack': '../vendor/greensock-js/src/uncompressed/easing/EasePack',
-        'TweenCSSPlugin': '../vendor/greensock-js/src/uncompressed/plugins/CSSPlugin'
+        'TweenLite': '../vendor/greensock/src/uncompressed/TweenLite',
+        'TweenEasePack': '../vendor/greensock/src/uncompressed/easing/EasePack',
+        'TweenCSSPlugin': '../vendor/greensock/src/uncompressed/plugins/CSSPlugin'
     },
 
     // Sets the configuration for your third party scripts that are not AMD compatible
@@ -72,7 +72,7 @@ requirejs.config({
 
         'TweenLite': {
             'exports': 'TweenLite',
-            'deps': ['TweenEasePack', 'TweenCSSPlugin']
+            //'deps': ['TweenEasePack', 'TweenCSSPlugin']
         }
     }
 });

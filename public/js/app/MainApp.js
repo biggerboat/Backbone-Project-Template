@@ -26,7 +26,8 @@ requirejs.config({
         'backbone-recursive-tojson': '../vendor/backbone-recursive-toJSON/backbone-recursive-tojson',
         'TweenLite': '../vendor/greensock/src/uncompressed/TweenLite',
         'TweenEasePack': '../vendor/greensock/src/uncompressed/easing/EasePack',
-        'TweenCSSPlugin': '../vendor/greensock/src/uncompressed/plugins/CSSPlugin'
+        'TweenCSSPlugin': '../vendor/greensock/src/uncompressed/plugins/CSSPlugin',
+        'signals': '../vendor/signals/dist/signals'
     },
 
     // Sets the configuration for your third party scripts that are not AMD compatible

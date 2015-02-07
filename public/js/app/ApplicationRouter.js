@@ -4,12 +4,16 @@ define([
     'view/TestView',
     'model/TestModel',
     'command/OnTestModelChangedLogSomethingCommand',
+    'command/ShowBlueScreenCommand',
+    'util/SignalCommandMapper',
     'util/isDebug'
 ], function(Backbone,
             navigatorjs,
             TestView,
             TestModel,
             OnTestModelChangedLogSomethingCommand,
+            ShowBlueScreenCommand,
+            SignalCommandMapper,
             isDebug) {
 
     return Backbone.CommandRouter.extend({
@@ -21,6 +25,14 @@ define([
         stateUrlSyncer: null, //new navigatorjs.integration.StateUrlSyncer
 
         routes: {'': ''},
+
+        signalCommandMap: {
+            'showBlueScreenTrigger': ShowBlueScreenCommand
+        },
+
+        signalList: [
+            'showBlueScreenResponse'
+        ],
 
         initialize: function() {
             this.initializeNavigator();
@@ -56,11 +68,19 @@ define([
             this.stateViewMap.mapState('/').toView(TestView).withArguments({injector: this.injector});
         },
 
+        /**
+         * First performs optional classic command binding.
+         * Then performs our prefered method: signal-command binding by convention.
+         */
         bindCommands: function() {
             this.bindCommand(
                 this.injector.getInstance('testModel'),
                 'change',
                 OnTestModelChangedLogSomethingCommand);
+
+            SignalCommandMapper.extendInjector(this.injector);
+            SignalCommandMapper.mapSignalsToCommands(this.signalCommandMap);
+            SignalCommandMapper.mapSignals(this.signalList);
         },
 
         addDebug: function() {

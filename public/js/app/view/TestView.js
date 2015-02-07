@@ -9,8 +9,11 @@ define([
         navigatorBehaviors: ['IHasStateTransition'],
 
         testModel: 'inject',
+        showBlueScreenTrigger: 'inject',
 
-        events: {},
+        events: {
+            'click .blue': 'onClickBlue'
+        },
 
         initialize: function() {
             this.listenTo(this.testModel, 'change:name', this.render);
@@ -20,6 +23,13 @@ define([
             this.$el.html(template(this.testModel.toJSON()));
 
             return this;
+        },
+
+        onClickBlue: function() {
+            var demoParam1 = true,
+                demoParam2 = 'Just to show how to pass vars to a command';
+
+            this.showBlueScreenTrigger.dispatch(demoParam1, demoParam2);
         },
 
         transitionIn: function(callOnComplete) {

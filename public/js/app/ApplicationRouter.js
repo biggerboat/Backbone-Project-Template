@@ -1,14 +1,18 @@
 define([
+    'underscore',
     'backbone',
     'navigator-js',
+    'view/BlueScreenView',
     'view/TestView',
     'model/TestModel',
     'command/OnTestModelChangedLogSomethingCommand',
     'command/ShowBlueScreenCommand',
     'util/SignalCommandMapper',
     'util/isDebug'
-], function(Backbone,
+], function(_,
+            Backbone,
             navigatorjs,
+            BlueScreenView,
             TestView,
             TestModel,
             OnTestModelChangedLogSomethingCommand,
@@ -33,6 +37,11 @@ define([
         signalList: [
             'showBlueScreenResponse'
         ],
+
+        stateViewMappings: {
+            'TestView': {view: TestView, states: ['/'], depth: 0},
+            'BlueScreenView': {view: BlueScreenView, states: ['/blue'], depth: 1}
+        },
 
         initialize: function() {
             this.initializeNavigator();
@@ -65,11 +74,18 @@ define([
         },
 
         mapStates: function() {
-            this.stateViewMap.mapState('/').toView(TestView).withArguments({injector: this.injector});
+            _.each(this.stateViewMappings, function(mapping) {
+                console.log('ApplicationRouter -> ', mapping.states);
+                this.addStateMapping(mapping.states, mapping.view);
+            }, this);
+        },
+
+        addStateMapping: function(states, view) {
+            this.stateViewMap.mapState(states).toView(view).withArguments({injector: this.injector});
         },
 
         /**
-         * First performs optional classic command binding.
+         * First performs (deprecated) classic command binding.
          * Then performs our prefered method: signal-command binding by convention.
          */
         bindCommands: function() {

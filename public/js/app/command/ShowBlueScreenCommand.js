@@ -10,7 +10,7 @@ define([
                 console.log('Why are these variables passed?\n', answer);
             }
 
-            //this.njs.request('blue');
+            this.njs.request('blue');
         }
     });
 });
